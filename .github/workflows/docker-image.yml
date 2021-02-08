@@ -10,9 +10,12 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: jessie
 
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag opencv-python3.7:$(date +%s)
+      with:
+        arch: armv7
+        distro: jessie
+        run: docker build . --file Dockerfile --tag opencv-python3.7:$(date +%s)
